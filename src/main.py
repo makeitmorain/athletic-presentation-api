@@ -7,22 +7,18 @@ from src.routes.presentation import presentation_bp
 from src.routes.upload import upload_bp
 from src.routes.download import download_bp
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, 
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/api/*": {"origins": "https://athletic-presentation-frontend.onrender.com"}})
 
-# Register blueprints
 app.register_blueprint(health_bp)
 app.register_blueprint(presentation_bp)
 app.register_blueprint(upload_bp)
 app.register_blueprint(download_bp)
 
-# Create necessary directories
 os.makedirs('/tmp/uploads', exist_ok=True)
 os.makedirs('/tmp/outputs', exist_ok=True)
 
