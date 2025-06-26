@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import os
 import logging
-from src.routes.health import health_bp
+from routes.health import health_bp
 from src.routes.presentation import presentation_bp
 from src.routes.upload import upload_bp
 from src.routes.download import download_bp
