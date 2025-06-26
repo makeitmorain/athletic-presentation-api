@@ -1,7 +1,3 @@
-# Navigate to your repository root
-cd /path/to/athletic-presentation-api
-
-# Create a simple app.py
 cat > app.py << 'EOF'
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -37,19 +33,10 @@ def debug_structure():
                 files.append(os.path.join(root, filename))
     return jsonify({
         "working_directory": os.getcwd(),
-        "python_files": files[:20]  # First 20 files
+        "python_files": files[:20]
     })
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 EOF
-
-# Remove the problematic wsgi.py if it exists
-rm -f wsgi.py
-
-# Commit and push
-git add app.py
-git rm wsgi.py 2>/dev/null || true
-git commit -m "Create simple working Flask app"
-git push
